@@ -1,5 +1,19 @@
-mongoose.connect(process.env.DATABASE_URL || devConnectionString,{
+const mongoose = require('mongoose');
+const devConnectionString = 'mongodb://localhost:3000/justinthyme';
+const db = mongoose.connection;
 
+
+
+mongoose.connect(process.env.DATABASE_URL || devConnectionString,{
+useNewUrlParser: true
+})
+
+db.on(`connected`, ()=> {
+    console.log(`Database Server: ${db.host} connected on port ${db.port}`)
+});
+
+db.on('error', (err) =>{
+    console.log(`The database Server Threw an error ${err}`);
 })
 
 //MongoDB - Check the stitch application for the info on the blog posts that he
