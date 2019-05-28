@@ -7,4 +7,5 @@ const recipeSchema = new mongoose.Schema({
     prepTime: Number,
     servingSize: Number,
 
-})
+});
+
