@@ -19,11 +19,15 @@ passport.use(new GoogleStrategy({
                 email: profile.emails[0].value,
                 googleId: profile.id
             });
-            newStudent.save(function(err){
+            newUser.save(function(err){
                 if (err) return cb(err);
-                return cb(null, newStudent);
+                return cb(null, newUser);
             });
         }
     }
     )
 }));
+
+passport.serializeUser(function(user, done){
+    done(null, user.id);
+});
