@@ -8,7 +8,7 @@ passport.use(new GoogleStrategy({
     callbackURL: process.env.GOOGLE_CALLBACK
 }, function(acccesToken, refreshToken, profile, cb){
     // a user has loged in with OAuth
-    User.findone({ 'googleId': profile.id}, function(err, student){
+    User.findOne({ 'googleId': profile.id}, function(err, user){
         if (err) return cb (err);
         if (user){
             return cb (null, user);
@@ -34,6 +34,6 @@ passport.serializeUser(function(user, done){
 
 passport.deserializeUser(function(id, done){
     User.findById(id, function(err, user){
-        done(err, student);
+        done(err, user);
     });
 });

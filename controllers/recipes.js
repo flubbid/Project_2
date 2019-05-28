@@ -8,7 +8,12 @@ module.exports = {
 }
 
 function index (req, res){
-    
+    Recipe.find({}, (err, recipes) => {
+        res.render('recipes/index', {
+            recipes,
+            user: req.user     
+        })
+    })
 }
 
 function show(req, res){
