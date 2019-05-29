@@ -8,6 +8,7 @@ var passport = require('passport')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var recipeRouter = require('./routes/recipes')
+var ingredientsRouter = require('./routes/ingredients')
 
 //authentication
 var session = require('express-session')
@@ -43,6 +44,7 @@ app.use(passport.session());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/recipes', recipeRouter)
+app.use('/ingredients', ingredientsRouter)
 app.get('*', (req, res) => res.render('404'));
 
 // catch 404 and forward to error handler
