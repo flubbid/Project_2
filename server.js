@@ -29,12 +29,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+//Anything route that is requested that does not exist, it will go to the 404 template.
 
 //session middleware for passport
 app.use(session({
-secret: `abc123`,
-resave: false,
-saveUninitialized: true
+  secret: `abc123`,
+  resave: false,
+  saveUninitialized: true
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -42,6 +43,7 @@ app.use(passport.session());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/recipes', recipeRouter)
+app.get('*', (req, res) => res.render('404'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
