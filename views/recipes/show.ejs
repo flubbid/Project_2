@@ -1,10 +1,23 @@
-<% include partials/head%>
+<% include ../partials/head%>
 
 <body>
-    <%- include('partials/navBar')%>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <div><%- include('partials/footer')%></div>
+    <%- include ../partials/navBar%>
+    <section id="show-page">
+       <div> <%= recipe.name %> </div>
+        <label>Prep Time</label>
+        <input type="text" name="prepTime">
+        <label>Serving Size</label>
+        <input type="text" name="servingSize">
+        <label>Instructions</label>
+        <textarea name="instructions" id="" cols="30" rows="10"></textarea>
+        <label>Ingredients:</label>
+        <ul>
+            <li>Blah to the mufcking Dah</li>
+        </ul>
+
+    </section>
+    
+    <%- include ../partials/footer%>
 </body>
 
 </html>
