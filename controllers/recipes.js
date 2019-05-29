@@ -21,9 +21,12 @@ function show(req, res){
 }
 
 function newRecipe(req, res){
-
+res.render('recipes/new', { title: 'Add Recipe'})
 }
 
 function create (req, res){
-
+Recipe.create(req.body, function(err, recipe){
+    if (err) return res.redirect('/recipes/new');
+    res.redirect(`/recipes/${recipe._id}`)
+})
 }
