@@ -7,3 +7,4 @@ const ingredientSchema = new mongoose.Schema({
     ingredientCategory: String
 })
 
+module.exports = mongoose.model('Ingredients', ingredientSchema)
