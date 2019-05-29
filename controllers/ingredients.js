@@ -1,5 +1,5 @@
 const Recipe = require('../models/recipe');
-const Ingredients = require('../models/ingredient')
+const Ingredient = require('../models/ingredient')
 
 module.exports = {
     new: newPerformer,
@@ -7,14 +7,25 @@ module.exports = {
     addToRecipe
 }
 
-function newPerformer(req, res){
-
+function addToRecipe (req, res){
+    Recipe.findById(req.parama.id, function (err, recipe) {
+        recipe.ingredients.push(req.body.ingredientsId);
+        recipe.save(function(err) {
+            res.redirect(`/recipes/${recipe._id}`);
+        });
+    });
 }
 
 function create(req, res){
-
+ Ingredient.create(req.body, function (err, ingredient){
+     res.redirect('/ingredients/new')
+ })   
 }
 
-function addToRecipe (req, res){
-    
+function newPerformer(req, res){
+ Ingredient.find({}, function(err, ingredients) {
+     res.render('ingredients/new', {
+         name: 'Add Ingredients', ingredients
+     })
+ })
 }
