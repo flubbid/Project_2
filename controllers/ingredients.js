@@ -25,7 +25,7 @@ function create(req, res){
 function newPerformer(req, res){
  Ingredient.find({}, function(err, ingredients) {
      res.render('ingredients/new', {
-         name: 'Add Ingredients', ingredients
+         title: 'Add Ingredients', ingredients
      })
  })
 }
