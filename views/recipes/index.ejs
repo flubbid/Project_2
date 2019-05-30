@@ -2,6 +2,11 @@
 <body>
     <div><% include ../partials/navBar%></div>
     <h1>This page is for recipes</h1>
-    <div><% include ../partials/footer%></div>
+
+<% recipes.forEach(recipe=>{ %>
+<a href="/recipes/<%=recipe._id%>><%= recipe.name %></a>
+<% }) %>   
+
+<div><% include ../partials/footer%></div>
 </body>
 </html>
