@@ -2,9 +2,10 @@ const Recipe = require('../models/recipe');
 const Ingredient = require('../models/ingredient')
 
 module.exports = {
-    new: newPerformer,
+    new: newIngredients,
     create,
-    addToRecipe
+    addToRecipe,
+    show
 }
 
 function addToRecipe (req, res){
@@ -22,10 +23,18 @@ function create(req, res){
  })   
 }
 
-function newPerformer(req, res){
+function newIngredients(req, res){
  Ingredient.find({}, function(err, ingredients) {
      res.render('ingredients/new', {
-         title: 'Add Ingredients', ingredients
+         title: 'Add Ingredients', ingredients, user: req.user
      })
  })
+}
+
+function show(req, res){
+    Ingredient.find({}, function(err, ingredients){
+        res.render('ingredients/index', {
+            title:'Show Ingredients', ingredients, user: req.user
+        })
+    })
 }
