@@ -1,12 +1,15 @@
     <% include ../partials/head%>
 <body>
     <div><% include ../partials/navBar%></div>
-    <h1>This page is for recipes</h1>
+    <h1>Recipe List</h1>
+<div class="recipe">
 
-<% recipes.forEach(recipe=>{ %>
-<a href="/recipes/<%=recipe._id%>/detail"><%= recipe.name %></a>
-
-<% }) %>   
+    <% recipes.forEach(recipe=>{ %>
+        <a href="/recipes/<%=recipe._id%>/detail"><%= recipe.name %></a>
+        <% }) %> 
+        
+    </div>
+ 
 <a href="/recipes/new">Create New Recipe</a>
 <div><% include ../partials/footer%></div>
 </body>
