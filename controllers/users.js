@@ -15,3 +15,4 @@ function index(req, res, next){
         name: req.query.name,
     });
 }
+
