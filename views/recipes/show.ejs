@@ -3,14 +3,18 @@
 <body>
     <%- include ../partials/navBar%>
     <section id="show-page">
-       <div> <%= recipe.name %> </div>
-        <label>Prep Time</label>
-        <input type="text" name="prepTime">
-        <label>Serving Size</label>
-        <input type="text" name="servingSize">
-        <label>Instructions</label>
-        <textarea name="instructions" id="" cols="30" rows="10"></textarea>
-        <label>Ingredients:</label>
+        <div> <%= recipe.name %> </div>
+            <form action="/recipes/<%=recipe._id%>/ingredients" method="POST">
+        
+        <label>Ingredients:
+            <select name="id">
+                <% ingredients.forEach(function(i) { %>
+                <option value="<%= i._id %>"><%= i.name%></option>
+                <% }) %>
+            </select>
+        </label>
+            <input type="submit" value="Add Ingredient">
+        </form>
         <ul>
             <li>Blah to the mufcking Dah</li>
         </ul>
