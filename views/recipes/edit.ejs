@@ -1,0 +1,17 @@
+
+<% include ../partials/head %>
+<body>
+    <% include ../partials/navBar %>
+<form id="new-form" action="/recipes/<%= recipe._id %>?_method=PUT" method="POST">
+    <label>Recipe Name</label>
+    <input type="text" name="name" value="<%= recipe.name %>">
+    <label>Prep Time</label>
+    <input type="text" name="prepTime" value="<%= recipe.prepTime %>">
+    <label>Serving Size</label>
+    <input type="text" name="servingSize" value="<%= recipe.servingSize %>">
+    <label>Instructions</label>
+    <textarea name="instructions" id="" cols="30" rows="10"><%= recipe.instructions %></textarea>
+    <input type="submit" value="Update Recipe">
+</form>
+</body>
+</html
