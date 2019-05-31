@@ -1,0 +1,11 @@
+<% include ../partials/head %>
+<body>
+        <% include ../partials/navBar %>
+        <form method="get" action="/ingredients/new">
+                <button type="submit">Add New</button>
+        </form>
+    <% ingredients.forEach(i=> { %>
+        <p><%= i.name%></p>
+    <%})%>
+</body>
+</html>
